@@ -3,6 +3,7 @@ CREATE OR REPLACE PACKAGE DAF_K_DESARROLLO_RAPIDO IS
   -- Author  : YAJAIRA BARRAGAN ARTEAGA
   -- Created : 01/06/2007 10:25:53
   -- Purpose : GENERAR AUTOMATICAMENTE LOS PAQUETES DE UNA APLICACION NOMINA
+  -- Cambios: PAra pruebas BMO
 
   PROCEDURE DAF_P_K_VALIDA     (Pv_Owner VARCHAR2,
                                 Pv_Aplicacion VARCHAR2,
@@ -112,6 +113,9 @@ CREATE OR REPLACE PACKAGE BODY DAF_K_DESARROLLO_RAPIDO is
     Lv_EspaciosCursor VARCHAR2(1000);
     Ln_Cantidad number;
     Lv_NombreTabla VARCHAR2(30);
+    
+    error varchar2(2000);
+    
 BEGIN
 
      DBMS_OUTPUT.PUT_LINE ('CREATE OR REPLACE PACKAGE BODY '|| Pv_Aplicacion||'_K_VALIDA IS');
@@ -376,6 +380,9 @@ BEGIN
          DBMS_OUTPUT.PUT_LINE ('');
      END LOOP;
      DBMS_OUTPUT.PUT_LINE ('END '|| Pv_Aplicacion||'_K_VALIDA;');
+     
+     error := 'Pruebas';
+     
      EXCEPTION
                WHEN OTHERS THEN
                     Pv_MsgError := 'DAF_K_DESARROLLO_RAPIDO -> DAF_P_K_VALIDA ('|| SQLCODE || ') '|| SQLERRM;

@@ -3,12 +3,13 @@ CREATE OR REPLACE PACKAGE DAF_K_DESARROLLO_RAPIDO IS
   -- Author  : YAJAIRA BARRAGAN ARTEAGA
   -- Created : 01/06/2007 10:25:53
   -- Purpose : GENERAR AUTOMATICAMENTE LOS PAQUETES DE UNA APLICACION NOMINA
-  -- Cambios: PAra pruebas BMO
+  -- Cambios: PAra pruebas BMO --más pruebas sobre Github
 
   PROCEDURE DAF_P_K_VALIDA     (Pv_Owner VARCHAR2,
                                 Pv_Aplicacion VARCHAR2,
                                 Pv_Author     VARCHAR2,
-                                Pv_MsgError OUT VARCHAR2);
+                                Pv_MsgError OUT VARCHAR2,
+                                Pv_Otro_Error OUT VARCHAR2);
   --
   PROCEDURE DAF_P_ESP_K_VALIDA (Pv_Owner VARCHAR2,
                                 Pv_Aplicacion VARCHAR2,
@@ -381,8 +382,8 @@ BEGIN
      END LOOP;
      DBMS_OUTPUT.PUT_LINE ('END '|| Pv_Aplicacion||'_K_VALIDA;');
      
-     error := 'Pruebas';
-     
+     ERROR:= 'SIGUE LAS PRUEBAS DE VERIFICACIÓN EN LÍNEA CON ALEX';
+
      EXCEPTION
                WHEN OTHERS THEN
                     Pv_MsgError := 'DAF_K_DESARROLLO_RAPIDO -> DAF_P_K_VALIDA ('|| SQLCODE || ') '|| SQLERRM;
